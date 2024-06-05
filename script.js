@@ -56,7 +56,7 @@ const resolveAll = Promise.all([p1,p2,p3]).then ((data) =>{                     
      console.log(data)
 })                                
 
-//Resolvendo várias promises com Race
+//Resolvendo várias promises com Race - respeita o tempo individual de cada promise
 
 const p4 = new Promise((resolve, reject) => {
     setTimeout(() =>{              //atrasa a execução do codigo em 2 milisegundos (2000)
@@ -72,6 +72,23 @@ const p6 = new Promise((resolve, reject) => {
    console.log('P6 OK!')
 })
 
-const resolveRace = Promise.race([p4,p5,p6]).then ((data) =>{                           
+const resolveRace = Promise.race([p4,p5,p6]).then ((data) =>{                             
     console.log(data)
 })  
+
+//Fetch API - API GitHub
+
+const userName = 'vinicimxt'
+
+fetch('https://api.github.com/users/' + userName, {
+    method : 'GET',
+    headers : {
+        Accept: 'application/vnd.github.v3+json'
+    },
+}).then((response)=>{
+    return response.json();
+}).then((data)=>{
+    console.log(data.name)
+}).catch((error) =>{
+    console.log(error)
+})
