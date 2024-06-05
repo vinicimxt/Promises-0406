@@ -1,0 +1,3 @@
+ctrl+: => coloca tudo em comentário
+
+alt+124 = |
